@@ -35,7 +35,7 @@ class TelemetryGenerator
   def start_process(target = @target)
     @activity_type = 'start_process'
     @target = target
-    if File.exists?(target) && File.executable?(target)
+    if File.exist?(target) && File.executable?(target)
       pid = spawn([@target, @options[:args]].join(' '))
       @timestamp = Time.now
       @process = ProcTable.ps(pid: pid)
@@ -63,7 +63,7 @@ class TelemetryGenerator
   def modify_file(target = @target)
     @activity_type = 'modify_file'
     @target = File.expand_path(target)
-    if File.exists?(target)
+    if File.exist?(target)
       file = File.new(target, 'w')
       file.write(@options[:data] || ' ')
       @timestamp = Time.now
@@ -78,7 +78,7 @@ class TelemetryGenerator
   def remove_file(target = @target)
     @activity_type = 'remove_file'
     @target = File.expand_path(target)
-    if File.exists?(target)
+    if File.exist?(target)
       File.delete(target)
       @timestamp = Time.now
 
@@ -141,7 +141,7 @@ class TelemetryGenerator
 
     log_path = '/tmp/rc_take_home_logs/log.json'
     
-    create_file(log_path, true) unless File.exists?(log_path)
+    create_file(log_path, true) unless File.exist?(log_path)
     File.write(log_path, event_log.to_json, mode: 'a+')
     
   end
