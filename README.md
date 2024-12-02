@@ -16,7 +16,7 @@ This service is focused on a few flows an EDR agent might be watching and report
 - Creating, modifying, or deleting a file
 - Connecting to a network endpoint and transmitting data
 
-Events are logged in `/tmp/rc_take_home_logs/log.json`
+Events are logged in `/tmp/rc_take_home_logs/log.json`, these logs could be used to validate events being tracked by an EDR agent to ensure issues haven't developed.
 
 The service can either be run with explicit inputs to run a specific tests or without inputs to run a preprogrammed set of events. Example commands:
 
